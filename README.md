@@ -213,3 +213,71 @@ Pour activer votre compte Stripe, vous avez besoin d'une URL de site web publiqu
 3.  Retournez sur Stripe, et dans le champ **"Site Web de l'entreprise"**, collez ce lien complet.
     > **Note importante :** Cette URL est utilisée **uniquement** pour le champ "Site Web de l'entreprise" sur le site de Stripe. Vous ne devez **pas** la mettre dans votre fichier `.env`.
 
+### 5. Publier Votre Application (Mise à Jour Finale)
+
+**Votre Lien Public :**
+
+Votre application est en ligne et accessible à l'adresse suivante. C'est le seul lien que vous devez utiliser et partager :
+
+**https://calc-ai-app.vercel.app**
+
+---
+
+**Instructions pour mettre à jour l'application :**
+
+Chaque fois que vous voulez publier de nouvelles modifications, suivez ces 3 étapes.
+
+1.  **Ouvrez le Terminal :**
+    *   Dans le menu en haut, allez à **Terminal > Nouveau Terminal**.
+
+2.  **Copiez-collez ces 3 commandes, une par une :**
+    Appuyez sur `Entrée` après chaque commande.
+
+    *   **Commande 1 : Préparer les fichiers**
+        ```bash
+        git add .
+        ```
+
+    *   **Commande 2 : Sauvegarder les changements** (vous pouvez changer le message)
+        ```bash
+        git commit -m "Nouvelle mise à jour"
+        ```
+
+    *   **Commande 3 : Envoyer et publier**
+        ```bash
+        git push origin main
+        ```
+
+Après la troisième commande, attendez une minute ou deux, et votre site sera à jour sur votre lien public.
+
+### 6. Faire connaître votre application (SEO)
+
+Pour que votre application soit visible sur Google, il est fortement recommandé de l'enregistrer sur la **Google Search Console**.
+
+1.  **Allez sur Google Search Console :**
+    *   Connectez-vous avec votre compte Google et allez sur [Google Search Console](https://search.google.com/search-console).
+
+2.  **Ajoutez votre site :**
+    *   Dans le menu à gauche, cliquez sur le sélecteur de propriété (il affiche probablement "Search Console" au début), puis sur **"+ Ajouter la propriété"**.
+    *   Choisissez le type de propriété **"Préfixe de l'URL"**.
+    *   Entrez l'URL complète de votre application : **`https://calc-ai-app.vercel.app`**
+    *   Cliquez sur **"CONTINUER"**.
+
+3.  **Vérifiez que vous êtes bien le propriétaire :**
+    *   Google va vous proposer plusieurs méthodes de validation. Choisissez **"Balise HTML"**.
+    *   Google vous donnera une ligne de code qui ressemble à : `<meta name="google-site-verification" content="VOTRE_CODE_UNIQUE" />`
+    *   **Copiez cette balise complète.**
+
+4.  **Ajoutez la balise à votre code :**
+    *   Revenez dans votre projet ici.
+    *   Ouvrez le fichier : **`src/app/layout.tsx`**.
+    *   Collez la balise que vous avez copiée de Google juste en dessous de la ligne où il est écrit `<head>`.
+    *   Le fichier `layout.tsx` a déjà un emplacement préparé pour vous.
+
+5.  **Publiez à nouveau les changements :**
+    *   Utilisez les 3 commandes `git` habituelles (`add`, `commit`, `push`) pour mettre votre site à jour avec la nouvelle balise.
+
+6.  **Finalisez la vérification :**
+    *   Retournez sur la page de Google Search Console et cliquez sur le bouton **"VALIDER"**.
+
+Une fois cette opération effectuée, votre site sera officiellement connu de Google, ce qui accélérera grandement son apparition dans les résultats de recherche.
