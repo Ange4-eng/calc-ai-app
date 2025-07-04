@@ -1,3 +1,5 @@
+
+
 # Firebase Studio
 
 This is a NextJS starter in Firebase Studio.
@@ -30,8 +32,21 @@ This project uses Firebase for user authentication (signing in with Google) and 
 1.  Create an account on [Stripe](https://stripe.com).
 2.  In your dashboard, go to the "Developers" section and find your API keys.
 3.  Open the `.env` file in the project. Paste your **Secret Key** into `STRIPE_SECRET_KEY`.
+    > **Note Importante (Live vs Test) :** Une fois votre compte activé, vous avez accès à deux types de clés : "Test" (pour le développement) et "Live" (pour les vrais paiements). Assurez-vous que la clé que vous copiez est bien votre **Clé Secrète LIVE** (elle commence par `sk_live_...`). Vous pouvez basculer entre les modes Test et Live avec l'interrupteur en haut à droite de votre tableau de bord Stripe.
 4.  In your Stripe Dashboard, go to the **Products** section and click **"+ Add product"**.
-5.  Give your product a name, for example, "CalcAI Pro".
+    > **Attention : Vérifier que vous êtes en "Mode Production" (Live)**
+    > Avant de créer votre produit, il est **crucial** de vous assurer que vous n'êtes pas en "Mode Test". Les produits créés en mode test ne sont pas valables pour de vrais paiements.
+    >
+    > Il y a deux façons simples de vérifier :
+    > 1.  **L'indicateur Visuel :** Cherchez en haut de votre tableau de bord. Le "Mode Test" est généralement indiqué par une **bannière orange** ou un texte très visible. Si vous ne voyez rien de tel, vous êtes probablement en Mode Production.
+    > 2.  **Vérification par les Clés API (méthode infaillible) :**
+    >     *   Allez dans l'onglet **Développeurs > Clés API**.
+    >     *   Regardez vos "Clés standard".
+    >     *   Si elles commencent par `pk_live_...` et `sk_live_...`, vous êtes bien en **Mode Production**.
+    >     *   Si elles commencent par `pk_test_...` et `sk_test_...`, vous êtes en **Mode Test**.
+    >
+    > Assurez-vous d'être en Mode Production avant de continuer.
+5.  Give your product a name, for example, "CalcAI Pro". Pour la description, vous pouvez mettre `Abonnement mensuel à CalcAI Pro`.
 6.  On the product's details page, find the "Pricing" section and click on **"+ Add new price"**.
 7.  Set your desired price. The `6€/month` is just an example value. Make sure to select **Recurring** for the billing period. Click **"Add price"**.
     > **Note on Quantity:** When creating the price, Stripe might ask about quantity. For this application, which is designed for individual users, **the quantity should be fixed at 1**. You should not allow customers to change it.
@@ -96,7 +111,30 @@ This project uses Firebase for user authentication (signing in with Google) and 
 13. **Activer votre compte Stripe**
     Pour accepter de vrais paiements, Stripe vous demandera d'activer votre compte en fournissant des informations sur votre entreprise.
     *   **Site Web de l'entreprise :** Stripe requiert un site web public. Une URL locale comme `http://localhost:9002` ne sera pas acceptée. Si vous n'avez pas encore de site, vous pouvez utiliser une solution temporaire comme un lien vers votre profil GitHub ou LinkedIn, ou déployer une page "Prochainement" comme expliqué dans la section suivante.
-
+14. **Remplir vos informations publiques (Crucial)**
+    Stripe vous demandera de remplir des informations qui seront visibles par vos clients. C'est très important pour qu'ils reconnaissent leurs achats et pour éviter les contestations de paiement.
+    *   **Nom affiché / Nom du profil :** C'est le nom public de votre entreprise ou produit.
+        *   **Suggestion :** `CalcAI Pro`
+    *   **ID du réseau :** Un identifiant unique pour votre profil sur Stripe (comme un nom d'utilisateur). Il doit être court, en minuscules et ne contenir que des lettres, des chiffres et des tirets bas (_).
+        *   **Suggestion :** `calcai_app`
+    *   **Libellé de relevé bancaire :** C'est le nom qui apparaîtra sur le relevé de carte bancaire de votre client. Il doit être **court et très facile à reconnaître**.
+        *   **Exemples :** `CALCAI.APP` ou `CALCAI PRO`.
+    *   **Libellé abrégé :** Une version encore plus courte du nom pour les relevés qui ont peu d'espace.
+        *   **Exemple :** `CALCAI`.
+    *   **Description de l'entreprise :** Si un champ plus long est demandé, décrivez simplement votre service.
+        *   **Exemple :** `CalcAI : L'Omni-Calculatrice Intelligente.`
+    *   **Numéro de téléphone de contact :**
+        *   **Idéalement, ce champ est optionnel.** Si Stripe vous permet de le laisser vide, c'est la meilleure option pour commencer et protéger votre vie privée.
+        *   **Si le champ est obligatoire :** Dans certains pays, Stripe exige un numéro de téléphone pour l'activation. Si vous ne pouvez pas continuer sans en fournir un, voici la meilleure solution :
+            *   **Option 1 (Recommandée) : Utiliser un numéro VoIP.** Vous pouvez obtenir un numéro de téléphone gratuit ou très bon marché via des services comme Google Voice ou Skype. C'est la meilleure façon de protéger votre numéro personnel.
+            *   **Option 2 : Utiliser votre numéro personnel.** Pour un petit projet qui démarre, le risque de recevoir des appels est très faible. Vous pouvez utiliser votre numéro pour passer cette étape d'activation et souvent le modifier ou le supprimer plus tard dans les paramètres de votre compte Stripe.
+15. **Ignorer les étapes facultatives**
+    Pendant le processus d'activation, Stripe peut vous proposer des services supplémentaires comme `Stripe Tax` ou `Stripe Climate`. Ces fonctionnalités sont utiles mais **ne sont pas nécessaires** pour que l'application fonctionne. Vous pouvez cliquer sur **"Ignorer pour l'instant"** ou **"Non merci"** pour passer ces étapes en toute sécurité et terminer la configuration plus rapidement.
+16. **Sécuriser votre compte (2FA)**
+    Lors de la création de votre compte, Stripe vous demandera de configurer l'authentification à deux facteurs (2FA) pour sécuriser votre compte. C'est une étape obligatoire et très importante.
+    *   **Option recommandée : "Application d'authentification"**. C'est la méthode la plus sûre et la plus pratique. Vous devrez installer une application sur votre téléphone (comme Google Authenticator, Microsoft Authenticator, ou Authy). Stripe affichera un code QR que vous scannerez avec l'application pour la lier à votre compte.
+    *   **Clé de sécurité (USB) :** C'est une autre option, mais elle n'est pas nécessaire si vous utilisez une application d'authentification.
+    *   **SMS :** Une option moins sécurisée, mais qui peut dépanner.
 
 ### 4. Obtenir une URL Publique pour l'Activation de Stripe
 
@@ -104,51 +142,62 @@ Pour activer votre compte Stripe, vous avez besoin d'une URL de site web publiqu
 
 **Étape A : Mettre votre projet sur GitHub**
 1.  Créez un nouveau dépôt (repository) sur [GitHub.com](https://github.com/new).
-2.  Donnez-lui un nom (ex: `calc-ai-app`) et gardez-le public. La description est facultative mais peut être utile (ex: "CalcAI: Une application de calculatrice intelligente").
-3.  Dans le terminal de votre projet, lancez ces commandes une par une pour initialiser Git et préparer vos fichiers :
+2.  Donnez-lui un nom (ex: `calc-ai-app`) et gardez-le public. La description est facultative.
+3.  **Ouvrez un terminal DANS le dossier `workspace`** de votre projet (Menu -> Terminal -> Nouveau Terminal). Puis, tapez ces commandes une par une :
     ```bash
-    # (Si vous avez déjà essayé, supprimez l'ancien dossier .git pour recommencer proprement)
+    # (Si la commande 'git init' échoue, supprimez l'ancien dossier .git pour recommencer proprement)
     rm -rf .git
     
     # Initialise Git
     git init -b main
 
-    # Ajoute tous vos fichiers
+    # Ajoute tous vos fichiers pour le suivi
     git add .
 
-    # Sauvegarde vos fichiers
+    # Sauvegarde vos fichiers avec un message descriptif
     git commit -m "Première version de CalcAI"
 
-    # Lie votre projet local à votre dépôt GitHub distant
-    # Remplacez l'URL par la vôtre !
+    # Lie votre dossier local au dépôt en ligne sur GitHub
+    # Remplacez l'URL ci-dessous par celle de votre propre dépôt !
     git remote add origin https://github.com/VOTRE_NOM/calc-ai-app.git
     ```
+    *(Note: la commande `git remote add` peut afficher une erreur `remote origin already exists` si elle a déjà été exécutée. Ce n'est pas grave, vous pouvez continuer.)*
+
 4.  **Authentification auprès de GitHub (Très Important)**
     Pour envoyer ("push") votre code, vous ne pouvez pas utiliser votre mot de passe GitHub directement dans le terminal. Vous devez utiliser un **"Personal Access Token"** (un mot de passe d'application).
 
     a. **Générez votre Token :**
-       - Allez sur la page de création de token : [**github.com/settings/tokens/new**](https://github.com/settings/tokens/new).
-       - **Note :** Donnez un nom à votre token (ex: `vercel-deploy-token`).
+       - Allez sur la page de création de token : [**github.com/settings/tokens/new**](https://github.com/settings/tokens/new) et choisissez **"Generate new token (classic)"**.
+       - **Note :** Donnez un nom à votre token (ex: `firebase-studio-token`).
        - **Expiration :** Choisissez `30 days`.
-       - **Scopes :** Cochez la case principale **`repo`**. C'est la seule nécessaire.
+       - **Scopes :** Cochez la case principale **`repo`**. C'est la seule permission nécessaire.
        - Cliquez sur **"Generate token"**.
     
     b. **Copiez votre Token :**
-       - GitHub va vous montrer un token qui commence par `ghp_...`. Copiez-le immédiatement. **C'est la seule fois que vous le verrez.**
+       - GitHub va vous montrer un token qui commence par `ghp_...`. Copiez-le immédiatement et gardez-le en sécurité. **C'est la seule fois que vous le verrez.**
 
-5.  **Envoyer votre code (Push)**
-    Maintenant, lancez la commande pour envoyer le code :
+5.  **Envoyer le code (Push)**
+    Lancez la commande pour envoyer le code :
     ```bash
     git push -u origin main
     ```
-    Le terminal vous demandera votre `Username` et votre `Password` :
+    Le terminal peut vous demander votre `Username` et votre `Password` :
     - **Username:** Entrez votre nom d'utilisateur GitHub.
     - **Password:** **Collez le token `ghp_...`** que vous venez de copier. (Le texte ne s'affichera pas pendant que vous collez, c'est normal).
-    
-    Si cela ne fonctionne pas, il existe une méthode encore plus directe :
+
+    **Si ça ne fonctionne pas (erreur `Authentication failed`) :**
+    C'est un bug connu du gestionnaire d'identifiants. Utilisez cette méthode plus directe, qui est souvent plus fiable.
+
+    **MÉTHODE ALTERNATIVE (RECOMMANDÉE)**
+    1. Assurez-vous d'avoir un token **nouvellement généré** avec la permission `repo`.
+    2. Construisez la commande suivante en remplaçant `VOTRE_NOM` et `VOTRE_TOKEN` :
     ```bash
-    # (Alternative) Remplacez V_USER, V_TOKEN, et V_REPO par vos informations
-    git remote set-url origin https://V_USER:V_TOKEN@github.com/V_USER/V_REPO.git
+    # Modèle : git remote set-url origin https://VOTRE_NOM:VOTRE_TOKEN@github.com/VOTRE_NOM/calc-ai-app.git
+    git remote set-url origin https://Ange4-eng:ghp_xxxxxxxx@github.com/Ange4-eng/calc-ai-app.git
+    ```
+    3. Collez cette commande complète dans le terminal et appuyez sur Entrée.
+    4. Maintenant, envoyez le code. Il ne devrait plus vous demander de mot de passe :
+    ```bash
     git push -u origin main
     ```
 
@@ -162,3 +211,5 @@ Pour activer votre compte Stripe, vous avez besoin d'une URL de site web publiqu
 1.  Après le déploiement, Vercel vous donnera une URL publique (ex: `https://calc-ai-app-xyz.vercel.app`).
 2.  Ajoutez `/soon` à la fin de cette URL pour pointer vers la page "Prochainement" : `https://calc-ai-app-xyz.vercel.app/soon`.
 3.  Retournez sur Stripe, et dans le champ **"Site Web de l'entreprise"**, collez ce lien complet.
+    > **Note importante :** Cette URL est utilisée **uniquement** pour le champ "Site Web de l'entreprise" sur le site de Stripe. Vous ne devez **pas** la mettre dans votre fichier `.env`.
+
