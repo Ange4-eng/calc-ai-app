@@ -5,7 +5,15 @@
 > Vous pouvez la voir et la partager avec ce lien. C'est le seul lien à partager.
 > **https://calc-ai-app.vercel.app**
 
-This is a NextJS starter in Firebase Studio.
+---
+
+### Accès Direct à Vercel
+
+Pour voir l'état de vos déploiements, les logs, ou gérer les paramètres de votre projet, vous pouvez vous connecter directement à votre tableau de bord Vercel.
+
+> **[Accéder au tableau de bord Vercel](https://vercel.com/dashboard)**
+
+---
 
 ## Getting Started
 
@@ -218,7 +226,7 @@ Pour activer votre compte Stripe, vous avez besoin d'une URL de site web publiqu
 
 ### 5. Publier Votre Application (Mise à Jour Finale)
 
-Chaque fois que vous voulez publier de nouvelles modifications, suivez ces 3 étapes. **Il est normal de répéter ces commandes souvent.**
+Chaque fois que vous voulez publier de nouvelles modifications, suivez ces 3 étapes. **Il est normal de répéter ces commandes souvent.** C'est ainsi que vous publiez votre travail.
 
 1.  **Ouvrez le Terminal :**
     *   Dans le menu en haut, allez à **Terminal > Nouveau Terminal**.
@@ -274,3 +282,5 @@ Pour que votre application soit visible sur Google, il est fortement recommandé
     *   Retournez sur la page de Google Search Console et cliquez sur le bouton **"VALIDER"**.
 
 Une fois cette opération effectuée, votre site sera officiellement connu de Google, ce qui accélérera grandement son apparition dans les résultats de recherche.
+
+    
