@@ -5,7 +5,7 @@ import { EquationSolver } from "@/components/equation-solver";
 import { WordProblemSolver } from "@/components/word-problem-solver";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CalculatorIcon, Sigma, LineChart, BookText, CheckCircle2, BarChart2, Shapes, Scale, FunctionSquare, Grid3x3, PiggyBank, Blocks, Combine, ListOrdered, Triangle, FileSignature, Waypoints, Orbit, GitCompareArrows, Variable, TrendingUp, Percent, Dice5, BookOpenCheck } from "lucide-react";
+import { CalculatorIcon, Sigma, LineChart, BookText, CheckCircle2, BarChart2, Shapes, Scale, FunctionSquare, Grid3x3, PiggyBank, Blocks, ListOrdered, Triangle, FileSignature, BookOpenCheck, Waypoints, Orbit, GitCompareArrows, Variable, TrendingUp, Dice5 } from "lucide-react";
 import { ErrorCorrector } from "./error-corrector";
 import { StatisticsCalculator } from "./statistics-calculator";
 import { GeometryCalculator } from "./geometry-calculator";

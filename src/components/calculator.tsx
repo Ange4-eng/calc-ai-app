@@ -6,7 +6,7 @@ import { Loader2, Sparkles } from "lucide-react";
 
 const buttonGrid = [
   { value: "x²", label: "x²", type: "sci_action" },
-  { value: "xʸ", label: "xʸ", type: "operator" },
+  { value: "xʸ", label: "xʸ", type: "sci_action" },
   { value: "sin", label: "sin", type: "sci_action" },
   { value: "cos", label: "cos", type: "sci_action" },
   { value: "tan", label: "tan", type: "sci_action" },
@@ -42,9 +42,9 @@ const buttonGrid = [
   { value: "+", label: "+", type: "operator" },
   
   { value: "AI_SIMPLIFY", label: "✨", type: "ai_action" },
-  { value: "0", label: "0", type: "number", className: "col-span-2" },
+  { value: "0", label: "0", type: "number" },
   { value: ".", label: ".", type: "number" },
-  { value: "=", label: "=", type: "equals" },
+  { value: "=", label: "=", type: "equals", className: "col-span-2" },
 ];
 
 export function Calculator() {
@@ -82,7 +82,7 @@ export function Calculator() {
                 onClick={() => handleButtonClick(btn.value)}
                 variant={
                     btn.type === "operator" ? "secondary"
-                  : btn.type === "action" || btn.type === "sci_action" || btn.type === "ai_action" ? "ghost"
+                  : btn.type === "action" || btn.type === "sci_action" ? "ghost"
                   : btn.type === "equals" ? "default"
                   : "outline"
                 }

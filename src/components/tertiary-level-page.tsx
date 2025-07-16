@@ -66,7 +66,6 @@ export function TertiaryLevelPage() {
                          <TabsTrigger value="knowledge-engine">
                             <Brain className="mr-2 h-4 w-4" />
                             Moteur Scientifique
-                            <Lock className="ml-2 h-3 w-3" />
                         </TabsTrigger>
                         <TabsTrigger value="scientific">
                             <CalculatorIcon className="mr-2 h-4 w-4" />
