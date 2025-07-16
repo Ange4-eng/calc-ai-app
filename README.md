@@ -1,5 +1,7 @@
+
 > [!IMPORTANT]
-> **APPLICATION CORRIGÉE**
+> **APPLICATION CORRIGÉE - DÉPLOIEMENT EN COURS**
+> Cette modification a pour but de forcer Vercel à reconstruire le site pour que Google puisse le valider.
 > La dernière version déployée devrait être fonctionnelle. Si ce n'est pas le cas, veuillez nous en informer.
 
 # Firebase Studio
