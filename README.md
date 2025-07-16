@@ -1,14 +1,8 @@
-
-> [!IMPORTANT]
-> **APPLICATION CORRIGÉE - DÉPLOIEMENT EN COURS**
-> Cette modification a pour but de forcer Vercel à reconstruire le site pour que Google puisse le valider.
-> La dernière version déployée devrait être fonctionnelle. Si ce n'est pas le cas, veuillez nous en informer.
-
 # Firebase Studio
 
-> [!NOTE]
+> [!IMPORTANT]
 > **Votre Application est en Ligne !**
-> Vous pouvez la voir et la partager avec ce lien :
+> Vous pouvez la voir et la partager avec ce lien. C'est le seul lien à partager.
 > **https://calc-ai-app.vercel.app**
 
 This is a NextJS starter in Firebase Studio.
@@ -224,21 +218,10 @@ Pour activer votre compte Stripe, vous avez besoin d'une URL de site web publiqu
 
 ### 5. Publier Votre Application (Mise à Jour Finale)
 
-**Votre Lien Public :**
-
-Votre application est en ligne et accessible à l'adresse suivante. C'est le seul lien que vous devez utiliser et partager :
-
-**https://calc-ai-app.vercel.app**
-
----
-
-**Instructions pour mettre à jour l'application :**
-
-Chaque fois que vous voulez publier de nouvelles modifications, suivez ces 3 étapes. **Il est normal de répéter ces commandes souvent.** C'est ainsi que vous publiez votre travail.
+Chaque fois que vous voulez publier de nouvelles modifications, suivez ces 3 étapes. **Il est normal de répéter ces commandes souvent.**
 
 1.  **Ouvrez le Terminal :**
     *   Dans le menu en haut, allez à **Terminal > Nouveau Terminal**.
-    *   **TRÈS IMPORTANT :** Assurez-vous d'être dans le bon dossier. Le terminal doit indiquer `workspace`. Si ce n'est pas le cas, tapez `cd workspace` et appuyez sur Entrée.
 
 2.  **Copiez-collez ces 3 commandes, une par une :**
     Appuyez sur `Entrée` après chaque commande.
