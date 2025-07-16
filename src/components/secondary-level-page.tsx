@@ -1,3 +1,5 @@
+"use client";
+
 import { CalculatorUI } from "@/components/calculator-ui";
 import { EquationSolver } from "@/components/equation-solver";
 import { WordProblemSolver } from "@/components/word-problem-solver";
@@ -25,6 +27,7 @@ import { FunctionComparisonTool } from "./function-comparison-tool";
 import { NumberTheoryTool } from "./number-theory-tool";
 import { LinearRegressionTool } from "./linear-regression-tool";
 import { SolutionGrader } from "./solution-grader";
+import { CalcProvider } from "@/context/calc-context";
 
 const DynamicGraphingCalculator = dynamic(
     () => import('@/components/graphing-calculator').then(mod => mod.GraphingCalculator),
@@ -145,7 +148,9 @@ export function SecondaryLevelPage() {
                         </TabsTrigger>
                     </TabsList>
                     <TabsContent value="scientific" className="flex-1 overflow-y-auto">
-                        <CalculatorUI />
+                        <CalcProvider>
+                            <CalculatorUI />
+                        </CalcProvider>
                     </TabsContent>
                     <TabsContent value="graphing" className="flex-1 overflow-y-auto p-1">
                         <DynamicGraphingCalculator />

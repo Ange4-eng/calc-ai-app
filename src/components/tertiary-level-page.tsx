@@ -1,9 +1,11 @@
+"use client";
+
 import { CalculatorUI } from "@/components/calculator-ui";
 import { EquationSolver } from "@/components/equation-solver";
 import { WordProblemSolver } from "@/components/word-problem-solver";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CalculatorIcon, LineChart, Sigma, BookText, BarChart2, CheckCircle2, Shapes, Scale, FunctionSquare, Grid3x3, PiggyBank, Blocks, Combine, ListOrdered, Triangle, FileSignature, BookOpenCheck, Atom, Binary, InfinityIcon, Waves, Shuffle, Brain, FlaskConical, Beaker, Thermometer, Percent, Gauge, TestTube, Wind, TrendingUp, Variable, Orbit, Waypoints, GitCompareArrows, Dice5, Lock } from "lucide-react";
+import { CalculatorIcon, LineChart, Sigma, BookText, BarChart2, CheckCircle2, Shapes, Scale, FunctionSquare, Grid3x3, PiggyBank, Blocks, ListOrdered, Triangle, FileSignature, BookOpenCheck, Atom, Binary, InfinityIcon, Waves, Shuffle, Brain, FlaskConical, TrendingUp, Variable, Orbit, Waypoints, GitCompareArrows, Dice5, Lock } from "lucide-react";
 import { StatisticsCalculator } from "@/components/statistics-calculator";
 import { ErrorCorrector } from "@/components/error-corrector";
 import { GeometryCalculator } from "./geometry-calculator";
@@ -33,6 +35,7 @@ import { TrigonometricCircleTool } from "./trigonometric-circle-tool";
 import { VectorCalculator } from "./vector-calculator";
 import { ProFeatureWrapper } from "./pro-feature-wrapper";
 import { SolutionGrader } from "./solution-grader";
+import { CalcProvider } from "@/context/calc-context";
 
 const DynamicGraphingCalculator = dynamic(
     () => import('@/components/graphing-calculator').then(mod => mod.GraphingCalculator),
@@ -51,22 +54,22 @@ export function TertiaryLevelPage() {
     return (
         <Card className="h-full flex flex-col">
             <CardHeader>
-                <CardTitle>Outils Mathématiques Avancés</CardTitle>
+                <CardTitle>Outils pour le Supérieur</CardTitle>
                 <CardDescription>
                     La suite complète d'outils pour les mathématiques de niveau universitaire et au-delà.
                 </CardDescription>
             </CardHeader>
             <CardContent className="flex-1 p-4 flex flex-col overflow-hidden">
-                <Tabs defaultValue="scientific" className="flex-1 flex flex-col">
+                <Tabs defaultValue="knowledge-engine" className="flex-1 flex flex-col">
                     <TabsList className="w-full justify-start overflow-x-auto mb-4">
-                        <TabsTrigger value="scientific">
-                            <CalculatorIcon className="mr-2 h-4 w-4" />
-                            Calculatrice
-                        </TabsTrigger>
                          <TabsTrigger value="knowledge-engine">
                             <Brain className="mr-2 h-4 w-4" />
                             Moteur Scientifique
                             <Lock className="ml-2 h-3 w-3" />
+                        </TabsTrigger>
+                        <TabsTrigger value="scientific">
+                            <CalculatorIcon className="mr-2 h-4 w-4" />
+                            Calculatrice
                         </TabsTrigger>
                         <TabsTrigger value="graphing">
                             <LineChart className="mr-2 h-4 w-4" />
@@ -110,7 +113,7 @@ export function TertiaryLevelPage() {
                         </TabsTrigger>
                          <TabsTrigger value="calculus">
                             <FunctionSquare className="mr-2 h-4 w-4" />
-                            Calcul
+                            Calcul Différentiel
                         </TabsTrigger>
                          <TabsTrigger value="limits">
                             <InfinityIcon className="mr-2 h-4 w-4" />
@@ -181,13 +184,15 @@ export function TertiaryLevelPage() {
                             Correcteur
                         </TabsTrigger>
                     </TabsList>
-                    <TabsContent value="scientific" className="flex-1 overflow-y-auto">
-                        <CalculatorUI />
-                    </TabsContent>
                     <TabsContent value="knowledge-engine" className="flex-1 overflow-y-auto p-1">
                         <ProFeatureWrapper>
                            <KnowledgeEngine />
                         </ProFeatureWrapper>
+                    </TabsContent>
+                    <TabsContent value="scientific" className="flex-1 overflow-y-auto">
+                         <CalcProvider>
+                            <CalculatorUI />
+                        </CalcProvider>
                     </TabsContent>
                     <TabsContent value="graphing" className="flex-1 overflow-y-auto p-1">
                         <DynamicGraphingCalculator />

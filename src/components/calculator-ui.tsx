@@ -3,11 +3,9 @@
 import { Calculator } from "@/components/calculator";
 import { RightPanel } from "@/components/right-panel";
 import { Separator } from "@/components/ui/separator";
-import { CalcProvider } from "@/context/calc-context";
 
 export function CalculatorUI() {
   return (
-    <CalcProvider>
       <div className="flex w-full flex-col lg:flex-row lg:gap-6 h-full">
         <div className="flex flex-1 items-center justify-center lg:w-3/5">
           <Calculator />
@@ -17,6 +15,5 @@ export function CalculatorUI() {
           <RightPanel />
         </div>
       </div>
-    </CalcProvider>
   );
 }
