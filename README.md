@@ -1,6 +1,9 @@
 
-
 # Firebase Studio
+
+> [!IMPORTANT]
+> **APPLICATION CORRIGÉE**
+> La dernière version déployée devrait être fonctionnelle. Si ce n'est pas le cas, veuillez nous en informer.
 
 > [!NOTE]
 > **Votre Application est en Ligne !**
