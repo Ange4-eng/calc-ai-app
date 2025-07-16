@@ -1,14 +1,13 @@
-import { CalcProvider } from "@/context/calc-context";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { CalculatorUI } from "@/components/calculator-ui";
 import { EquationSolver } from "@/components/equation-solver";
 import { WordProblemSolver } from "@/components/word-problem-solver";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CalculatorIcon, LineChart, Sigma, BookText, BarChart2, CheckCircle2, Shapes, Scale, FunctionSquare, Grid3x3, PiggyBank, Blocks, Combine, ListOrdered, Triangle, FileSignature, BookOpenCheck, Atom, Binary, InfinityIcon, Waves, Shuffle, Brain, FlaskConical, Beaker, Thermometer, Percent, Gauge, TestTube, Wind, TrendingUp, Variable, Orbit, Waypoints, GitCompareArrows, Dice5, Lock } from "lucide-react";
 import { StatisticsCalculator } from "@/components/statistics-calculator";
 import { ErrorCorrector } from "@/components/error-corrector";
 import { GeometryCalculator } from "./geometry-calculator";
 import { UnitConverter } from "./unit-converter";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CalculatorIcon, LineChart, Sigma, BookText, BarChart2, CheckCircle2, Shapes, Scale, FunctionSquare, Grid3x3, PiggyBank, Blocks, Combine, ListOrdered, Triangle, FileSignature, BookOpenCheck, Atom, Binary, InfinityIcon, Waves, Shuffle, Brain, FlaskConical, Beaker, Thermometer, Percent, Gauge, TestTube, Wind, TrendingUp, Variable, Orbit, Waypoints, GitCompareArrows, Dice5, Lock } from "lucide-react";
 import { CalculusTool } from "./calculus-tool";
 import { MatrixCalculator } from "./matrix-calculator";
 import { FinancialCalculator } from "./financial-calculator";
@@ -183,9 +182,7 @@ export function TertiaryLevelPage() {
                         </TabsTrigger>
                     </TabsList>
                     <TabsContent value="scientific" className="flex-1 overflow-y-auto">
-                        <CalcProvider>
-                            <CalculatorUI />
-                        </CalcProvider>
+                        <CalculatorUI />
                     </TabsContent>
                     <TabsContent value="knowledge-engine" className="flex-1 overflow-y-auto p-1">
                         <ProFeatureWrapper>

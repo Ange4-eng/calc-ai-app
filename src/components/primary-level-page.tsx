@@ -1,4 +1,3 @@
-import { CalcProvider } from "@/context/calc-context";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { BasicCalculator } from "@/components/basic-calculator";
 import { WordProblemSolver } from "@/components/word-problem-solver";
@@ -7,6 +6,7 @@ import { CalculatorIcon, BookText, CheckCircle2, Scale, Shapes } from "lucide-re
 import { ErrorCorrector } from "./error-corrector";
 import { UnitConverter } from "./unit-converter";
 import { GeometryCalculator } from "./geometry-calculator";
+import { CalcProvider } from "@/context/calc-context";
 
 export function PrimaryLevelPage() {
   return (
