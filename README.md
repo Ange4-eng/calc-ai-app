@@ -1,9 +1,8 @@
-
-# Firebase Studio
-
 > [!IMPORTANT]
 > **APPLICATION CORRIGÉE**
 > La dernière version déployée devrait être fonctionnelle. Si ce n'est pas le cas, veuillez nous en informer.
+
+# Firebase Studio
 
 > [!NOTE]
 > **Votre Application est en Ligne !**
@@ -290,6 +289,3 @@ Pour que votre application soit visible sur Google, il est fortement recommandé
     *   Retournez sur la page de Google Search Console et cliquez sur le bouton **"VALIDER"**.
 
 Une fois cette opération effectuée, votre site sera officiellement connu de Google, ce qui accélérera grandement son apparition dans les résultats de recherche.
-
-    
-  
