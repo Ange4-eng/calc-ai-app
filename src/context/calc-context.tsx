@@ -1,3 +1,4 @@
+
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from 'react';
@@ -29,16 +30,23 @@ const evaluateExpression = (expr: string): string => {
       .replace(/÷/g, '/')
       .replace(/−/g, '-')
       .replace(/√\(/g, 'Math.sqrt(')
-      .replace(/(\d+)!/g, (match, n) => `factorial(${n})`)
-      .replace(/(\w+)\^(\w+)/g, 'Math.pow($1, $2)')
+      .replace(/(\d+\.?\d*)!/g, (match, n) => `factorial(${n})`)
+      .replace(/(\w+)\^/g, 'Math.pow($1,')
       .replace(/sin\(/g, 'Math.sin(Math.PI/180 *')
       .replace(/cos\(/g, 'Math.cos(Math.PI/180 *')
       .replace(/tan\(/g, 'Math.tan(Math.PI/180 *')
       .replace(/log\(/g, 'Math.log10(')
       .replace(/ln\(/g, 'Math.log(');
+      
+    // Handle x^y by adding the closing paren if needed
+    if ((sanitizedExpr.match(/Math\.pow\(/g) || []).length > (sanitizedExpr.match(/\)/g) || []).length) {
+        sanitizedExpr += ')';
+    }
+
 
     // Function to calculate factorial
     const factorial = (n: number): number => {
+      if (n < 0 || n !== Math.floor(n)) return NaN;
       if (n === 0 || n === 1) return 1;
       let result = 1;
       for (let i = 2; i <= n; i++) {
