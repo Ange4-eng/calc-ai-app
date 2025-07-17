@@ -52,172 +52,82 @@ export function SecondaryLevelPage() {
                 </CardDescription>
             </CardHeader>
             <CardContent className="flex-1 p-4 flex flex-col overflow-hidden">
-                <Tabs defaultValue="scientific" className="flex-1 flex flex-col">
-                    <TabsList className="w-full justify-start overflow-x-auto mb-4">
-                        <TabsTrigger value="scientific">
-                            <CalculatorIcon className="mr-2 h-4 w-4" />
-                            Calculatrice
-                        </TabsTrigger>
-                        <TabsTrigger value="graphing">
-                            <LineChart className="mr-2 h-4 w-4" />
-                            Graphique
-                        </TabsTrigger>
-                        <TabsTrigger value="analyzer">
-                            <FileSignature className="mr-2 h-4 w-4" />
-                            Analyse
-                        </TabsTrigger>
-                         <TabsTrigger value="comparison">
-                            <GitCompareArrows className="mr-2 h-4 w-4" />
-                            Comparaison
-                        </TabsTrigger>
-                        <TabsTrigger value="polynomials">
-                            <Sigma className="mr-2 h-4 w-4" />
-                            Polynômes
-                        </TabsTrigger>
-                         <TabsTrigger value="sequences">
-                            <ListOrdered className="mr-2 h-4 w-4" />
-                            Suites
-                        </TabsTrigger>
-                         <TabsTrigger value="number-theory">
-                            <Variable className="mr-2 h-4 w-4" />
-                            Théorie des Nombres
-                        </TabsTrigger>
-                        <TabsTrigger value="trigonometry">
-                            <Triangle className="mr-2 h-4 w-4" />
-                            Trigonométrie
-                        </TabsTrigger>
-                         <TabsTrigger value="trig-circle">
-                            <Orbit className="mr-2 h-4 w-4" />
-                            Cercle Trig
-                        </TabsTrigger>
-                        <TabsTrigger value="vectors">
-                            <Waypoints className="mr-2 h-4 w-4" />
-                            Vecteurs
-                        </TabsTrigger>
-                        <TabsTrigger value="systems">
-                            <Blocks className="mr-2 h-4 w-4" />
-                            Systèmes
-                        </TabsTrigger>
-                        <TabsTrigger value="calculus">
-                            <FunctionSquare className="mr-2 h-4 w-4" />
-                            Calcul
-                        </TabsTrigger>
-                        <TabsTrigger value="matrices">
-                            <Grid3x3 className="mr-2 h-4 w-4" />
-                            Matrices
-                        </TabsTrigger>
-                        <TabsTrigger value="financial">
-                            <PiggyBank className="mr-2 h-4 w-4" />
-                            Financier
-                        </TabsTrigger>
-                         <TabsTrigger value="geometry">
-                            <Shapes className="mr-2 h-4 w-4" />
-                            Géométrie
-                        </TabsTrigger>
-                        <TabsTrigger value="converter">
-                            <Scale className="mr-2 h-4 w-4" />
-                            Convertisseur
-                        </TabsTrigger>
-                        <TabsTrigger value="word-problems">
-                            <BookText className="mr-2 h-4 w-4" />
-                            Tuteur IA
-                        </TabsTrigger>
-                         <TabsTrigger value="step-by-step">
-                            <ListOrdered className="mr-2 h-4 w-4" />
-                            Pas à pas
-                        </TabsTrigger>
-                        <TabsTrigger value="grader">
-                             <BookOpenCheck className="mr-2 h-4 w-4" />
-                            Évaluateur
-                        </TabsTrigger>
-                        <TabsTrigger value="statistics">
-                            <BarChart2 className="mr-2 h-4 w-4" />
-                            Statistiques
-                        </TabsTrigger>
-                        <TabsTrigger value="regression">
-                             <TrendingUp className="mr-2 h-4 w-4" />
-                            Régression
-                        </TabsTrigger>
-                        <TabsTrigger value="probability">
-                            <Dice5 className="mr-2 h-4 w-4" />
-                            Probabilités
-                        </TabsTrigger>
-                        <TabsTrigger value="corrector">
-                            <CheckCircle2 className="mr-2 h-4 w-4" />
-                            Correcteur
-                        </TabsTrigger>
+                <Tabs defaultValue="calculators" className="flex-1 flex flex-col">
+                    <TabsList className="w-full justify-start overflow-x-auto mb-4 flex-wrap h-auto">
+                        <TabsTrigger value="calculators">Calculatrices</TabsTrigger>
+                        <TabsTrigger value="functions">Fonctions & Graphes</TabsTrigger>
+                        <TabsTrigger value="algebra">Algèbre</TabsTrigger>
+                        <TabsTrigger value="geometry-trig">Géométrie & Trigo.</TabsTrigger>
+                        <TabsTrigger value="stats-proba">Stats & Proba.</TabsTrigger>
+                        <TabsTrigger value="ai-tutors">Tuteurs IA</TabsTrigger>
                     </TabsList>
-                    <TabsContent value="scientific" className="flex-1 overflow-y-auto">
-                        <CalcProvider>
-                            <CalculatorUI />
-                        </CalcProvider>
+                    
+                    <TabsContent value="calculators" className="flex-1 overflow-y-auto">
+                        <Tabs defaultValue="scientific" className="w-full">
+                            <TabsList><TabsTrigger value="scientific">Scientifique</TabsTrigger><TabsTrigger value="financial">Financière</TabsTrigger><TabsTrigger value="converter">Convertisseur</TabsTrigger></TabsList>
+                            <TabsContent value="scientific" className="mt-4"><CalcProvider><CalculatorUI /></CalcProvider></TabsContent>
+                            <TabsContent value="financial" className="mt-4"><FinancialCalculator /></TabsContent>
+                            <TabsContent value="converter" className="mt-4"><UnitConverter /></TabsContent>
+                        </Tabs>
                     </TabsContent>
-                    <TabsContent value="graphing" className="flex-1 overflow-y-auto p-1">
-                        <DynamicGraphingCalculator />
+
+                    <TabsContent value="functions" className="flex-1 overflow-y-auto p-1">
+                         <Tabs defaultValue="graphing" className="w-full">
+                            <TabsList><TabsTrigger value="graphing">Traceur</TabsTrigger><TabsTrigger value="analyzer">Analyseur</TabsTrigger><TabsTrigger value="comparison">Comparateur</TabsTrigger></TabsList>
+                            <TabsContent value="graphing" className="mt-4"><DynamicGraphingCalculator /></TabsContent>
+                            <TabsContent value="analyzer" className="mt-4"><FunctionAnalyzer /></TabsContent>
+                            <TabsContent value="comparison" className="mt-4"><FunctionComparisonTool /></TabsContent>
+                        </Tabs>
                     </TabsContent>
-                    <TabsContent value="analyzer" className="flex-1 overflow-y-auto p-1">
-                        <FunctionAnalyzer />
+
+                    <TabsContent value="algebra" className="flex-1 overflow-y-auto p-1">
+                        <Tabs defaultValue="polynomials" className="w-full">
+                            <TabsList className="w-full justify-start overflow-x-auto mb-4 flex-wrap h-auto">
+                                <TabsTrigger value="polynomials">Polynômes</TabsTrigger>
+                                <TabsTrigger value="sequences">Suites</TabsTrigger>
+                                <TabsTrigger value="number-theory">Théorie des Nombres</TabsTrigger>
+                                <TabsTrigger value="systems">Systèmes d'Équations</TabsTrigger>
+                                <TabsTrigger value="calculus">Calcul Différentiel</TabsTrigger>
+                                <TabsTrigger value="matrices">Matrices</TabsTrigger>
+                            </TabsList>
+                            <TabsContent value="polynomials" className="mt-4"><AdvancedPolynomialTool /></TabsContent>
+                            <TabsContent value="sequences" className="mt-4"><SequenceCalculator /></TabsContent>
+                            <TabsContent value="number-theory" className="mt-4"><NumberTheoryTool /></TabsContent>
+                            <TabsContent value="systems" className="mt-4"><EquationSolver /></TabsContent>
+                            <TabsContent value="calculus" className="mt-4"><CalculusTool /></TabsContent>
+                            <TabsContent value="matrices" className="mt-4"><MatrixCalculator /></TabsContent>
+                        </Tabs>
                     </TabsContent>
-                    <TabsContent value="comparison" className="flex-1 overflow-y-auto p-1">
-                        <FunctionComparisonTool />
+
+                    <TabsContent value="geometry-trig" className="flex-1 overflow-y-auto p-1">
+                        <Tabs defaultValue="trigonometry" className="w-full">
+                            <TabsList><TabsTrigger value="trigonometry">Résolveur de Triangles</TabsTrigger><TabsTrigger value="trig-circle">Cercle Trigonométrique</TabsTrigger><TabsTrigger value="vectors">Vecteurs</TabsTrigger><TabsTrigger value="geometry">Formes 2D/3D</TabsTrigger></TabsList>
+                            <TabsContent value="trigonometry" className="mt-4"><TrigonometryCalculator /></TabsContent>
+                            <TabsContent value="trig-circle" className="mt-4"><TrigonometricCircleTool /></TabsContent>
+                            <TabsContent value="vectors" className="mt-4"><VectorCalculator /></TabsContent>
+                            <TabsContent value="geometry" className="mt-4"><GeometryCalculator /></TabsContent>
+                        </Tabs>
                     </TabsContent>
-                    <TabsContent value="polynomials" className="flex-1 overflow-y-auto p-1">
-                        <AdvancedPolynomialTool />
+
+                     <TabsContent value="stats-proba" className="flex-1 overflow-y-auto p-1">
+                        <Tabs defaultValue="statistics" className="w-full">
+                            <TabsList><TabsTrigger value="statistics">Statistiques</TabsTrigger><TabsTrigger value="regression">Régression Linéaire</TabsTrigger><TabsTrigger value="probability">Probabilités</TabsTrigger></TabsList>
+                            <TabsContent value="statistics" className="mt-4"><StatisticsCalculator /></TabsContent>
+                            <TabsContent value="regression" className="mt-4"><LinearRegressionTool /></TabsContent>
+                            <TabsContent value="probability" className="mt-4"><ProbabilityCalculator /></TabsContent>
+                        </Tabs>
                     </TabsContent>
-                     <TabsContent value="sequences" className="flex-1 overflow-y-auto p-1">
-                        <SequenceCalculator />
+
+                     <TabsContent value="ai-tutors" className="flex-1 overflow-y-auto p-1">
+                        <Tabs defaultValue="word-problems" className="w-full">
+                            <TabsList><TabsTrigger value="word-problems">Résolveur de Problèmes</TabsTrigger><TabsTrigger value="step-by-step">Solution Pas à Pas</TabsTrigger><TabsTrigger value="grader">Évaluateur de Solution</TabsTrigger><TabsTrigger value="corrector">Correcteur d'Erreur</TabsTrigger></TabsList>
+                            <TabsContent value="word-problems" className="mt-4"><WordProblemSolver /></TabsContent>
+                            <TabsContent value="step-by-step" className="mt-4"><StepByStepSolver /></TabsContent>
+                            <TabsContent value="grader" className="mt-4"><SolutionGrader /></TabsContent>
+                             <TabsContent value="corrector" className="mt-4"><ErrorCorrector /></TabsContent>
+                        </Tabs>
                     </TabsContent>
-                    <TabsContent value="number-theory" className="flex-1 overflow-y-auto p-1">
-                        <NumberTheoryTool />
-                    </TabsContent>
-                    <TabsContent value="trigonometry" className="flex-1 overflow-y-auto p-1">
-                        <TrigonometryCalculator />
-                    </TabsContent>
-                     <TabsContent value="trig-circle" className="flex-1 overflow-y-auto p-1">
-                        <TrigonometricCircleTool />
-                    </TabsContent>
-                    <TabsContent value="vectors" className="flex-1 overflow-y-auto p-1">
-                        <VectorCalculator />
-                    </TabsContent>
-                    <TabsContent value="systems" className="flex-1 overflow-y-auto p-1">
-                        <EquationSolver />
-                    </TabsContent>
-                    <TabsContent value="calculus" className="flex-1 overflow-y-auto p-1">
-                        <CalculusTool />
-                    </TabsContent>
-                    <TabsContent value="matrices" className="flex-1 overflow-y-auto p-1">
-                        <MatrixCalculator />
-                    </TabsContent>
-                    <TabsContent value="financial" className="flex-1 overflow-y-auto p-1">
-                        <FinancialCalculator />
-                    </TabsContent>
-                    <TabsContent value="geometry" className="flex-1 overflow-y-auto p-1">
-                        <GeometryCalculator />
-                    </TabsContent>
-                    <TabsContent value="converter" className="flex-1 overflow-y-auto p-1">
-                        <UnitConverter />
-                    </TabsContent>
-                    <TabsContent value="word-problems" className="flex-1 overflow-y-auto p-1">
-                        <WordProblemSolver />
-                    </TabsContent>
-                     <TabsContent value="step-by-step" className="flex-1 overflow-y-auto p-1">
-                        <StepByStepSolver />
-                    </TabsContent>
-                    <TabsContent value="grader" className="flex-1 overflow-y-auto p-1">
-                        <SolutionGrader />
-                    </TabsContent>
-                    <TabsContent value="statistics" className="flex-1 overflow-y-auto p-1">
-                        <StatisticsCalculator />
-                    </TabsContent>
-                    <TabsContent value="regression" className="flex-1 overflow-y-auto p-1">
-                        <LinearRegressionTool />
-                    </TabsContent>
-                    <TabsContent value="probability" className="flex-1 overflow-y-auto p-1">
-                        <ProbabilityCalculator />
-                    </TabsContent>
-                    <TabsContent value="corrector" className="flex-1 overflow-y-auto p-1">
-                        <ErrorCorrector />
-                    </TabsContent>
+
                 </Tabs>
             </CardContent>
         </Card>

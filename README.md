@@ -204,7 +204,7 @@ Pour activer votre compte Stripe, vous avez besoin d'une URL de site web publiqu
     2. Construisez la commande suivante en remplaçant `VOTRE_NOM` et `VOTRE_TOKEN` :
     ```bash
     # Modèle : git remote set-url origin https://VOTRE_NOM:VOTRE_TOKEN@github.com/VOTRE_NOM/calc-ai-app.git
-    git remote set-url origin https://Ange4-eng:ghp_xxxxxxxx@github.com/Ange4-eng/calc-ai-app.git
+    git remote set-url origin https://VOTRE_NOM:VOTRE_TOKEN@github.com/VOTRE_NOM/calc-ai-app.git
     ```
     3. Collez cette commande complète dans le terminal et appuyez sur Entrée.
     4. Maintenant, envoyez le code. Il ne devrait plus vous demander de mot de passe :

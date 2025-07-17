@@ -1,5 +1,5 @@
 import type {Metadata, Viewport} from 'next';
-import { Inter, Sora } from 'next/font/google';
+import { Sora } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from '@/context/auth-context';
@@ -9,12 +9,6 @@ const sora = Sora({
   display: 'swap',
   variable: '--font-sora',
 });
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
 
 export const metadata: Metadata = {
   title: "CalcAI : L'Omni-Calculatrice Intelligente propulsée par l'IA",
@@ -43,13 +37,13 @@ export const metadata: Metadata = {
    twitter: {
     card: 'summary_large_image',
     title: "CalcAI : L'Omni-Calculatrice Intelligente",
-    description: 'Résolvez n\'importe quel problème mathématique avec des explications IA. De la calculatrice de base à l\'analyse de fonctions avancées.',
+    description: 'Résolvez n\\\'importe quel problème mathématique avec des explications IA. De la calculatrice de base à l\\\'analyse de fonctions avancées.',
     images: ['https://placehold.co/1200x630.png'],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#4F46E5",
+  themeColor: "#2E3192",
 }
 
 export default function RootLayout({
@@ -58,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" suppressHydrationWarning className={`${sora.variable} ${inter.variable}`}>
+    <html lang="fr" suppressHydrationWarning className={`${sora.variable}`}>
       <head>
         {/* Collez votre balise de vérification Google Search Console ici */}
         <meta name="google-site-verification" content="UEdQzCxFzpL9MrpxXtObnuLf7dv5ABGrwGoskIjGYJQ" />
@@ -68,7 +62,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="https://placehold.co/180x180.png" data-ai-hint="logo brain" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-sans antialiased">
         <AuthProvider>
           {children}
           <Toaster />

@@ -2,11 +2,10 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from 'react';
-import { simplifyExpression } from '@/ai/flows/simplify-expression';
 import { useLocalStorage } from '@/hooks/use-local-storage';
+import { simplifyExpression } from '@/ai/flows/simplify-expression';
 import { useToast } from '@/hooks/use-toast';
 import { getAIFriendlyErrorMessage } from '@/lib/utils';
-
 
 interface CalcContextType {
   expression: string;
@@ -31,18 +30,12 @@ const evaluateExpression = (expr: string): string => {
       .replace(/−/g, '-')
       .replace(/√\(/g, 'Math.sqrt(')
       .replace(/(\d+\.?\d*)!/g, (match, n) => `factorial(${n})`)
-      .replace(/(\w+)\^/g, 'Math.pow($1,')
+      .replace(/\^/g, '**') // Handles x^y
       .replace(/sin\(/g, 'Math.sin(Math.PI/180 *')
       .replace(/cos\(/g, 'Math.cos(Math.PI/180 *')
       .replace(/tan\(/g, 'Math.tan(Math.PI/180 *')
       .replace(/log\(/g, 'Math.log10(')
       .replace(/ln\(/g, 'Math.log(');
-      
-    // Handle x^y by adding the closing paren if needed
-    if ((sanitizedExpr.match(/Math\.pow\(/g) || []).length > (sanitizedExpr.match(/\)/g) || []).length) {
-        sanitizedExpr += ')';
-    }
-
 
     // Function to calculate factorial
     const factorial = (n: number): number => {
@@ -110,17 +103,22 @@ export function CalcProvider({ children }: { children: ReactNode }) {
          setExpression("Erreur");
       }
     } else if (['sin', 'cos', 'tan', '√', 'log', 'ln'].includes(value)) {
-        setExpression(prev => `${value}(${prev})`);
+        setExpression(prev => {
+            const lastChar = prev.slice(-1);
+            if (/\d|\)/.test(lastChar)) {
+                return `${prev}×${value}(`;
+            }
+            return `${prev}${value}(`;
+        });
     } else if (value === 'x²') {
-        setExpression(prev => `(${prev})^2`);
+        setExpression(prev => `(${prev})**2`);
     } else if (value === 'xʸ') {
-        setExpression(prev => `(${prev})^`);
+        setExpression(prev => `(${prev})**`);
     } else if (value === 'x!') {
         setExpression(prev => `(${prev})!`);
     } else if (value === '1/x') {
         setExpression(prev => `1/(${prev})`);
-    }
-    else {
+    } else {
       setExpression(prev => prev + value);
     }
   };

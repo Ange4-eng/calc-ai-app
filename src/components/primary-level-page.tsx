@@ -5,10 +5,11 @@ import { ErrorCorrector } from "./error-corrector";
 import { GeometryCalculator } from "./geometry-calculator";
 import { UnitConverter } from "./unit-converter";
 import { WordProblemSolver } from "@/components/word-problem-solver";
+import { ArithmeticCalculator } from "./arithmetic-calculator";
 
 import {
   BookText,
-  CalculatorIcon,
+  Calculator as CalculatorIcon,
   CheckCircle2,
   Scale,
   Shapes,
@@ -47,6 +48,10 @@ export function PrimaryLevelPage() {
               <CalculatorIcon className="mr-2 h-4 w-4" />
               Calculatrice
             </TabsTrigger>
+             <TabsTrigger value="arithmetic">
+              <CalculatorIcon className="mr-2 h-4 w-4" />
+              Arithmétique
+            </TabsTrigger>
             <TabsTrigger value="geometry">
               <Shapes className="mr-2 h-4 w-4" />
               Géométrie
@@ -70,6 +75,9 @@ export function PrimaryLevelPage() {
                 <BasicCalculator />
               </CalcProvider>
             </div>
+          </TabsContent>
+           <TabsContent value="arithmetic" className="flex-1 overflow-y-auto p-1">
+            <ArithmeticCalculator />
           </TabsContent>
           <TabsContent value="geometry" className="flex-1 overflow-y-auto p-1">
             <GeometryCalculator />
