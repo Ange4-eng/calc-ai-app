@@ -3,6 +3,7 @@ import { Sora } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from '@/context/auth-context';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const sora = Sora({
   subsets: ['latin'],
@@ -37,13 +38,16 @@ export const metadata: Metadata = {
    twitter: {
     card: 'summary_large_image',
     title: "CalcAI : L'Omni-Calculatrice Intelligente",
-    description: 'Résolvez n\\\'importe quel problème mathématique avec des explications IA. De la calculatrice de base à l\\\'analyse de fonctions avancées.',
+    description: "Résolvez n'importe quel problème mathématique avec des explications IA. De la calculatrice de base à l'analyse de fonctions avancées.",
     images: ['https://placehold.co/1200x630.png'],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2E3192",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
 }
 
 export default function RootLayout({
@@ -63,10 +67,17 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="font-sans antialiased">
-        <AuthProvider>
-          {children}
-          <Toaster />
-        </AuthProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AuthProvider>
+            {children}
+            <Toaster />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

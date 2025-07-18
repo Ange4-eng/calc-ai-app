@@ -14,7 +14,7 @@ export function MainLayout() {
       <header className="flex h-16 shrink-0 items-center justify-between border-b px-6">
         <Link href="/" className="flex items-center gap-3 cursor-pointer">
           <BrainCircuit className="h-7 w-7 text-primary" />
-          <h1 className="text-xl font-bold tracking-wider">
+          <h1 className="text-xl font-bold tracking-wider font-sans">
             CalcAI
           </h1>
         </Link>
@@ -36,7 +36,7 @@ export function MainLayout() {
             </TabsTrigger>
             <TabsTrigger value="tertiary">
                <BrainCircuit className="mr-2 h-4 w-4" />
-               Tertiaire
+               Supérieur
             </TabsTrigger>
           </TabsList>
           <TabsContent value="primary" className="flex-1">
