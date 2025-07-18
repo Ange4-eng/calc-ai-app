@@ -62,13 +62,10 @@ export function SecondaryLevelPage() {
                         <TabsTrigger value="ai-tutors">Tuteurs IA</TabsTrigger>
                     </TabsList>
                     
-                    <TabsContent value="calculators" className="flex-1 overflow-y-auto">
-                        <Tabs defaultValue="scientific" className="w-full">
-                            <TabsList><TabsTrigger value="scientific">Scientifique</TabsTrigger><TabsTrigger value="financial">Financière</TabsTrigger><TabsTrigger value="converter">Convertisseur</TabsTrigger></TabsList>
-                            <TabsContent value="scientific" className="mt-4"><CalcProvider><CalculatorUI /></CalcProvider></TabsContent>
-                            <TabsContent value="financial" className="mt-4"><FinancialCalculator /></TabsContent>
-                            <TabsContent value="converter" className="mt-4"><UnitConverter /></TabsContent>
-                        </Tabs>
+                    <TabsContent value="calculators" className="flex-1 overflow-y-auto p-1">
+                         <CalcProvider>
+                            <CalculatorUI />
+                         </CalcProvider>
                     </TabsContent>
 
                     <TabsContent value="functions" className="flex-1 overflow-y-auto p-1">
