@@ -1,7 +1,2 @@
-import { MainLayout } from "@/components/main-layout";
 
-export default function Home() {
-  return (
-    <MainLayout />
-  );
-}
+// This file is intentionally left empty.
